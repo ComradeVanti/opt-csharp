@@ -1,3 +1,4 @@
 ﻿### .Net Core ###
 obj/
 bin/
+*.sln.DotSettings.user
