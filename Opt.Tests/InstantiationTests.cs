@@ -4,7 +4,7 @@ using Xunit;
 namespace ComradeVanti.CSharpTools
 {
 
-    public class OptTests
+    public class InstantiationTests
     {
 
         [Property]
