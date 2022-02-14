@@ -75,6 +75,26 @@
         public static Opt<TValue> None<TValue>() =>
             new None<TValue>();
 
+        /// <summary>
+        ///     Creates an optional from a nullable, which will be missing if the
+        ///     given value is null
+        /// </summary>
+        /// <param name="value">The value to convert into an optional</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The created optional</returns>
+        public static Opt<TValue> FromNullable<TValue>(TValue value) where TValue : new() =>
+            value != null ? Some(value) : None<TValue>();
+
+        /// <summary>
+        ///     Creates an optional from a nullable, which will be missing if the
+        ///     given value is null
+        /// </summary>
+        /// <param name="value">The value to convert into an optional</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The created optional</returns>
+        public static Opt<TValue> FromNullable<TValue>(TValue? value) where TValue : struct =>
+            value != null ? Some(value.Value) : None<TValue>();
+
     }
 
 }

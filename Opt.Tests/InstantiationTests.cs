@@ -23,6 +23,29 @@ namespace ComradeVanti.CSharpTools
         public void OptsCreatedWithNoneAreNeverSome() =>
             Assert.False(Opt.None<int>().IsSome());
 
+        [Property]
+        public bool OptsCreatedFromNonNullValueTypesAreAlwaysSome(int i) =>
+            Opt.FromNullable((int?)i).IsSome();
+
+        [Property]
+        public bool OptsCreatedFromNonNullReferenceTypesAreAlwaysSome(TestRefType obj) =>
+            Opt.FromNullable(obj).IsSome();
+
+        [Fact]
+        public void OptsCreatedFromNullValueTypeAreNone() =>
+            Assert.True(Opt.FromNullable((int?)null).IsNone());
+
+        [Fact]
+        public void OptsCreatedFromNullReferenceTypeAreNone()
+        {
+#pragma warning disable CS8600
+            Assert.True(Opt.FromNullable((TestRefType)null).IsNone());
+#pragma warning restore CS8600
+        }
+
+
+        public class TestRefType { }
+
     }
 
 }
