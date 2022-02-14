@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>ComradeVanti.CSharpTools.Opt</AssemblyName>
+        <RootNamespace>ComradeVanti.CSharpTools</RootNamespace>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>ComradeVanti.CSharpTools.Opt</PackageId>
+        <Title>Opt</Title>
+        <Authors>ComradeVanti</Authors>
+        <Description>A C# library that mimics F#'s optionals</Description>
+        <PackageProjectUrl>https://github.com/ComradeVanti/opt</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/ComradeVanti/opt</RepositoryUrl>
+        <PackageTags>functional, optional, fsharp</PackageTags>
+    </PropertyGroup>
+
+</Project>
