@@ -37,15 +37,12 @@ namespace ComradeVanti.CSharpTools
         }
 
         [Property]
-        public bool OptsCreatedFromSuccessfulOpsAreSome(int i) => 
+        public bool OptsCreatedFromSuccessfulOpsAreSome(int i) =>
             Opt.FromOp(() => i).IsSome();
 
         [Fact]
-        public void OptsCreatedFromFailingOpsAreNone() => 
+        public void OptsCreatedFromFailingOpsAreNone() =>
             Assert.True(Opt.FromOp<int>(() => throw new Exception()).IsNone());
-
-
-        public class TestRefType { }
 
     }
 
