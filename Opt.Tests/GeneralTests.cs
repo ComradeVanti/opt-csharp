@@ -41,8 +41,20 @@ namespace ComradeVanti.CSharpTools
             Opt.Some(i).Get() == i;
 
         [Fact]
-        public void GettingValueFromNoneThrowsException() => 
+        public void GettingValueFromNoneThrowsException() =>
             Assert.Throws<OptionalMissingException>(() => Opt.None<int>().Get());
+
+        [Property]
+        public bool NoneOptsNeverContainAValue(int i) =>
+            !Opt.None<int>().Contains(i);
+
+        [Property]
+        public bool SomeOptsContainValueIfItIsEqual(int i) =>
+            Opt.Some(i).Contains(i);
+
+        [Property]
+        public bool SomeOptsDontContainValueIfItIsNotEqual(int i) =>
+            !Opt.Some(i).Contains(i + 1);
 
     }
 

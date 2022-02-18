@@ -152,6 +152,22 @@ namespace ComradeVanti.CSharpTools
                 _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
             };
 
+        /// <summary>
+        ///     Checks if this optional contains a specific value. If the optional
+        ///     is missing false is returned.
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="value">The value to check</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>Whether the optional contains the value</returns>
+        public static bool Contains<TValue>(this Opt<TValue> opt, TValue value) =>
+            opt switch
+            {
+                Some<TValue> some => Equals(some.Value, value),
+                None<TValue> => false,
+                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
+            };
+
     }
 
     /// <summary>
