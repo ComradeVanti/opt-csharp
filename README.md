@@ -1,4 +1,5 @@
 # opt
+[![Nuget](https://img.shields.io/nuget/v/ComradeVanti.CSharpTools.Opt)](https://www.nuget.org/packages/ComradeVanti.CSharpTools.Opt)  
 A C# library that mimics F#'s optionals. Since the functionality and in most cases even the method names are directly taken from F#, go check out [the documentation there](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html) for details.
 
 ## Features
