@@ -121,7 +121,7 @@ namespace ComradeVanti.CSharpTools
         /// <param name="onNone">The function to execute if the optional is missing</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <typeparam name="TMapped">The type of the result</typeparam>
-        /// <returns>The of either the onSome or onNone function</returns>
+        /// <returns>The result of either the onSome or onNone function</returns>
         public static TMapped Match<TValue, TMapped>(this Opt<TValue> opt, Func<TValue, TMapped> onSome, Func<TMapped> onNone) =>
             opt switch
             {
