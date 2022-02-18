@@ -13,6 +13,7 @@
         <PackageProjectUrl>https://github.com/ComradeVanti/opt</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ComradeVanti/opt</RepositoryUrl>
         <PackageTags>functional, optional, fsharp</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -20,4 +21,8 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+    
 </Project>
