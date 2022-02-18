@@ -181,6 +181,17 @@ namespace ComradeVanti.CSharpTools
         public static bool Contains<TValue>(this Opt<TValue> opt, TValue value) =>
             opt.Match(it => Equals(it, value), () => false);
 
+        /// <summary>
+        ///     Gets the value from this optional or a replacement if the value
+        ///     is missing
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="replacement">The replacement value</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The value or the replacement</returns>
+        public static TValue DefaultValue<TValue>(this Opt<TValue> opt, TValue replacement) =>
+            opt.Match(it => it, () => replacement);
+
     }
 
     /// <summary>

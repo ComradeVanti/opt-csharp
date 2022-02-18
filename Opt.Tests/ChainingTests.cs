@@ -122,6 +122,14 @@ namespace ComradeVanti.CSharpTools
         public static bool BindingChangesTheValue(int i) =>
             Opt.Some(i).Bind(it => Opt.Some(it + 1)).Get() == i + 1;
 
+        [Property]
+        public bool GettingValueFromSomeReturnsValue(int i) =>
+            Opt.Some(i).Map(it => (int?)it).DefaultValue(null) != null;
+
+        [Fact]
+        public void GettingValueFromNoneReturnsReplacement() =>
+            Assert.Equal(1, Opt.None<int>().DefaultValue(1));
+
     }
 
 }
