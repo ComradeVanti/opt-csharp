@@ -105,6 +105,14 @@ namespace ComradeVanti.CSharpTools
             }
         }
 
+        public static Opt<TMapped> Map<TMapped, TValue>(this Opt<TValue> opt, Func<TValue, TMapped> mapper) =>
+            opt switch
+            {
+                Some<TValue> some => Opt.Some(mapper(some.Value)),
+                None<TValue> => Opt.None<TMapped>(),
+                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
+            };
+
     }
 
     /// <summary>
