@@ -95,6 +95,27 @@ namespace ComradeVanti.CSharpTools
             };
 
         /// <summary>
+        ///     Executes the onSome action if the optional is present, passing in
+        ///     the value or the onNone if it is missing
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="onSome">The action for when the optional is present</param>
+        /// <param name="onNone">The action for when the optional is missing</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        public static void Match<TValue>(this Opt<TValue> opt, Action<TValue> onSome, Action onNone)
+        {
+            switch (opt)
+            {
+                case Some<TValue> some:
+                    onSome(some.Value);
+                    return;
+                case None<TValue>:
+                    onNone();
+                    return;
+            }
+        }
+
+        /// <summary>
         ///     Executes the given action if the optional is present,
         ///     passing in the contained value.
         /// </summary>
