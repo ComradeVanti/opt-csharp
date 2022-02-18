@@ -27,6 +27,12 @@ namespace ComradeVanti.CSharpTools
                 _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
             };
 
+        public static bool operator ==(Opt<TValue> opt1, Opt<TValue> opt2) =>
+            opt1.Equals(opt2);
+
+        public static bool operator !=(Opt<TValue> opt1, Opt<TValue> opt2) =>
+            !opt1.Equals(opt2);
+
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using FsCheck.Xunit;
+﻿using System.Diagnostics.CodeAnalysis;
+using FsCheck.Xunit;
 using Xunit;
 
 namespace ComradeVanti.CSharpTools
@@ -25,6 +26,15 @@ namespace ComradeVanti.CSharpTools
         [Fact]
         public void NoneAndNoneOfTheSameTypeAreEqual() =>
             Assert.Equal(Opt.None<int>(), Opt.None<int>());
+
+        [Fact] [SuppressMessage("ReSharper", "EqualExpressionComparison")]
+        public void OptsAreRelatedByEquality()
+        {
+            Assert.True(Opt.Some(0) == Opt.Some(0), "Equal opts should be same");
+            Assert.False(Opt.Some(0) == Opt.Some(1), "Unequal opts should not be same");
+            Assert.False(Opt.Some(0) != Opt.Some(0), "Equal opts should not be non-same");
+            Assert.True(Opt.Some(0) != Opt.Some(1), "Unequal opts should be non-same");
+        }
 
     }
 
