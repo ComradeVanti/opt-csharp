@@ -24,7 +24,7 @@ namespace ComradeVanti.CSharpTools
             {
                 Some<TValue> some => some.GetHashCode(),
                 None<TValue> _ => 0,
-                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen[
+                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
             };
 
     }
