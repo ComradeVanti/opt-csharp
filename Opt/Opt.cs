@@ -87,12 +87,8 @@ namespace ComradeVanti.CSharpTools
         /// <returns>The contained value</returns>
         /// <exception cref="OptionalMissingException">If the optional is missing</exception>
         public static TValue Get<TValue>(this Opt<TValue> opt) =>
-            opt switch
-            {
-                Some<TValue> some => some.Value,
-                None<TValue> => throw new OptionalMissingException(),
-                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
-            };
+            opt.Match(it => it,
+                      () => throw new OptionalMissingException());
 
         /// <summary>
         ///     Executes the onSome action if the optional is present, passing in
@@ -156,12 +152,8 @@ namespace ComradeVanti.CSharpTools
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The mapped optional</returns>
         public static Opt<TMapped> Map<TMapped, TValue>(this Opt<TValue> opt, Func<TValue, TMapped> mapper) =>
-            opt switch
-            {
-                Some<TValue> some => Opt.Some(mapper(some.Value)),
-                None<TValue> => Opt.None<TMapped>(),
-                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
-            };
+            opt.Match(it => Opt.Some(mapper(it)),
+                      Opt.None<TMapped>);
 
         /// <summary>
         ///     Maps an optional from one type to another using a mapping-function
@@ -176,12 +168,7 @@ namespace ComradeVanti.CSharpTools
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The mapped optional</returns>
         public static Opt<TMapped> Bind<TMapped, TValue>(this Opt<TValue> opt, Func<TValue, Opt<TMapped>> mapper) =>
-            opt switch
-            {
-                Some<TValue> some => mapper(some.Value),
-                None<TValue> => Opt.None<TMapped>(),
-                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
-            };
+            opt.Match(mapper, Opt.None<TMapped>);
 
         /// <summary>
         ///     Checks if this optional contains a specific value. If the optional
@@ -192,12 +179,7 @@ namespace ComradeVanti.CSharpTools
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>Whether the optional contains the value</returns>
         public static bool Contains<TValue>(this Opt<TValue> opt, TValue value) =>
-            opt switch
-            {
-                Some<TValue> some => Equals(some.Value, value),
-                None<TValue> => false,
-                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
-            };
+            opt.Match(it => Equals(it, value), () => false);
 
     }
 
