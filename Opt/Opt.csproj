@@ -5,22 +5,25 @@
         <AssemblyName>ComradeVanti.CSharpTools.Opt</AssemblyName>
         <RootNamespace>ComradeVanti.CSharpTools</RootNamespace>
         <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+    <PropertyGroup>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageId>ComradeVanti.CSharpTools.Opt</PackageId>
-        <Title>Opt</Title>
-        <Authors>ComradeVanti</Authors>
-        <Description>A C# library that mimics F#'s optionals</Description>
-        <PackageProjectUrl>https://github.com/ComradeVanti/opt</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/ComradeVanti/opt</RepositoryUrl>
-        <PackageTags>functional, optional, fsharp</PackageTags>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
-        <PackageIcon>Icon.png</PackageIcon>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
     <PropertyGroup>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageId>ComradeVanti.CSharpTools.Opt</PackageId>
+        <Title>Opt</Title>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Authors>ComradeVanti</Authors>
+        <Description>A C# library that mimics F#'s optionals</Description>
+        <PackageIcon>Icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/ComradeVanti/opt</RepositoryUrl>
+        <PackageTags>functional, optional, fsharp</PackageTags>
+        <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
