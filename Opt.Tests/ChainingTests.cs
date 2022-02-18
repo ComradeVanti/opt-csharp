@@ -43,6 +43,36 @@ namespace ComradeVanti.CSharpTools
         public static bool MappingChangesTheValue(int i) =>
             Opt.Some(i).Map(it => it + 1).Get() == i + 1;
 
+        [Property]
+        public static bool BindingFunctionIsOnlyCalledForSome(Opt<int> opt)
+        {
+            var executed = false;
+
+            _ = opt.Bind(_ =>
+            {
+                executed = true;
+                return Opt.Some(0);
+            });
+
+            return executed == opt.IsSome();
+        }
+
+        [Fact]
+        public static void BindingNoneProducesNone() =>
+            Assert.True(Opt.None<int>().Bind(Opt.Some).IsNone());
+
+        [Fact]
+        public static void BindingSomeWithSomeFunctionProducesSome() =>
+            Assert.True(Opt.Some(1).Bind(Opt.Some).IsSome());
+
+        [Fact]
+        public static void BindingSomeWithNoneFunctionProducesNone() =>
+            Assert.True(Opt.Some(1).Bind(_ => Opt.None<int>()).IsNone());
+
+        [Property]
+        public static bool BindingChangesTheValue(int i) =>
+            Opt.Some(i).Bind(it => Opt.Some(it + 1)).Get() == i + 1;
+
     }
 
 }

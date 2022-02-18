@@ -132,6 +132,26 @@ namespace ComradeVanti.CSharpTools
                 _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
             };
 
+        /// <summary>
+        ///     Maps an optional from one type to another using a mapping-function
+        ///     which itself produces an optional.
+        ///     If the optional is present its value will be passed to the
+        ///     mapping-function and the result returned. If the optional
+        ///     is missing a new missing optional will be returned.
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="mapper">The mapping function</param>
+        /// <typeparam name="TMapped">The type of the mapped optional</typeparam>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The mapped optional</returns>
+        public static Opt<TMapped> Bind<TMapped, TValue>(this Opt<TValue> opt, Func<TValue, Opt<TMapped>> mapper) =>
+            opt switch
+            {
+                Some<TValue> some => mapper(some.Value),
+                None<TValue> => Opt.None<TMapped>(),
+                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
+            };
+
     }
 
     /// <summary>
