@@ -7,7 +7,27 @@ namespace ComradeVanti.CSharpTools
     ///     A value that may be present or not
     /// </summary>
     /// <typeparam name="TValue">The type of the contained value</typeparam>
-    public abstract class Opt<TValue> { }
+    public abstract class Opt<TValue>
+    {
+
+        public override bool Equals(object? obj) =>
+            this switch
+            {
+                Some<TValue> some1 when obj is Some<TValue> some2 =>
+                    Equals(some1.Value, some2.Value),
+                None<TValue> _ when obj is None<TValue> _ => true,
+                _ => false
+            };
+
+        public override int GetHashCode() =>
+            this switch
+            {
+                Some<TValue> some => some.GetHashCode(),
+                None<TValue> _ => 0,
+                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen[
+            };
+
+    }
 
     /// <summary>
     ///     An optional value that is present
@@ -53,8 +73,8 @@ namespace ComradeVanti.CSharpTools
             opt is None<TValue>;
 
         /// <summary>
-        /// Executes the given action if the optional is present, 
-        /// passing in the contained value.
+        ///     Executes the given action if the optional is present,
+        ///     passing in the contained value.
         /// </summary>
         /// <param name="opt">The optional</param>
         /// <param name="action">The action to execute</param>
