@@ -22,6 +22,7 @@
         <PackageIcon>Icon.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryUrl>https://github.com/ComradeVanti/opt</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
         <PackageTags>functional, optional, fsharp</PackageTags>
         <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
     </PropertyGroup>
