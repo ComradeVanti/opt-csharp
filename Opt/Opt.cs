@@ -78,6 +78,14 @@ namespace ComradeVanti.CSharpTools
         public static bool IsNone<TValue>(this Opt<TValue> opt) =>
             opt is None<TValue>;
 
+        public static TValue Get<TValue>(this Opt<TValue> opt) =>
+            opt switch
+            {
+                Some<TValue> some => some.Value,
+                None<TValue> _ => throw new OptionalMissingException(),
+                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
+            };
+
         /// <summary>
         ///     Executes the given action if the optional is present,
         ///     passing in the contained value.

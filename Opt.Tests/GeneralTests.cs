@@ -36,6 +36,14 @@ namespace ComradeVanti.CSharpTools
             Assert.True(Opt.Some(0) != Opt.Some(1), "Unequal opts should be non-same");
         }
 
+        [Property]
+        public bool GettingValueFromSomeGetsTheValue(int i) =>
+            Opt.Some(i).Get() == i;
+
+        [Fact]
+        public void GettingValueFromNoneThrowsException() => 
+            Assert.Throws<OptionalMissingException>(() => Opt.None<int>().Get());
+
     }
 
 }
