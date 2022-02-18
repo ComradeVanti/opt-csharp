@@ -15,6 +15,7 @@
         <PackageTags>functional, optional, fsharp</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+        <PackageIcon>Icon.png</PackageIcon>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -24,6 +25,7 @@
 
     <ItemGroup>
         <None Include="../README.md" Pack="true" PackagePath="\"/>
+        <None Include="../Icon.png" Pack="true" PackagePath="\"/>
     </ItemGroup>
     
 </Project>
