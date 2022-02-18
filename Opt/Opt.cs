@@ -122,17 +122,8 @@ namespace ComradeVanti.CSharpTools
         /// <param name="opt">The optional</param>
         /// <param name="action">The action to execute</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
-        public static void Iter<TValue>(this Opt<TValue> opt, Action<TValue> action)
-        {
-            switch (opt)
-            {
-                case Some<TValue> some:
-                    action(some.Value);
-                    return;
-                case None<TValue>:
-                    return;
-            }
-        }
+        public static void Iter<TValue>(this Opt<TValue> opt, Action<TValue> action) => 
+            opt.Match(action, () => { });
 
         /// <summary>
         ///     Maps an optional from one type to another using a mapping-function.
