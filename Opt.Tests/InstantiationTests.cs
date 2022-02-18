@@ -8,17 +8,19 @@ namespace ComradeVanti.CSharpTools
     {
 
         [Property]
-        public bool OptsCreatedWithSomeAreAlwaysSome(int i) =>
+        public bool OptsCreatedWithSomeAreSome(int i) =>
             Opt.Some(i).IsSome();
+        
         [Fact]
-        public void OptsCreatedWithNoneAreAlwaysNone() =>
+        public void OptsCreatedWithNoneAreNone() =>
             Assert.True(Opt.None<int>().IsNone());
+        
         [Property]
-        public bool OptsCreatedFromNonNullValueTypesAreAlwaysSome(int i) =>
+        public bool OptsCreatedFromNonNullValueTypesAreSome(int i) =>
             Opt.FromNullable((int?)i).IsSome();
 
         [Property]
-        public bool OptsCreatedFromNonNullReferenceTypesAreAlwaysSome(TestRefType obj) =>
+        public bool OptsCreatedFromNonNullReferenceTypesAreSome(TestRefType obj) =>
             Opt.FromNullable(obj).IsSome();
 
         [Fact]
