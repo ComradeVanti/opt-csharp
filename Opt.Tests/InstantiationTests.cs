@@ -1,4 +1,5 @@
-﻿using FsCheck.Xunit;
+﻿using System;
+using FsCheck.Xunit;
 using Xunit;
 
 namespace ComradeVanti.CSharpTools
@@ -10,11 +11,11 @@ namespace ComradeVanti.CSharpTools
         [Property]
         public bool OptsCreatedWithSomeAreSome(int i) =>
             Opt.Some(i).IsSome();
-        
+
         [Fact]
         public void OptsCreatedWithNoneAreNone() =>
             Assert.True(Opt.None<int>().IsNone());
-        
+
         [Property]
         public bool OptsCreatedFromNonNullValueTypesAreSome(int i) =>
             Opt.FromNullable((int?)i).IsSome();
@@ -34,6 +35,14 @@ namespace ComradeVanti.CSharpTools
             Assert.True(Opt.FromNullable((TestRefType)null).IsNone());
 #pragma warning restore CS8600
         }
+
+        [Property]
+        public bool OptsCreatedFromSuccessfulOpsAreSome(int i) => 
+            Opt.FromOp(() => i).IsSome();
+
+        [Fact]
+        public void OptsCreatedFromFailingOpsAreNone() => 
+            Assert.True(Opt.FromOp<int>(() => throw new Exception()).IsNone());
 
 
         public class TestRefType { }

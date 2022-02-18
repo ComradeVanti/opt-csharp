@@ -1,4 +1,6 @@
-﻿namespace ComradeVanti.CSharpTools
+﻿using System;
+
+namespace ComradeVanti.CSharpTools
 {
 
     /// <summary>
@@ -94,6 +96,24 @@
         /// <returns>The created optional</returns>
         public static Opt<TValue> FromNullable<TValue>(TValue? value) where TValue : struct =>
             value != null ? Some(value.Value) : None<TValue>();
+
+        /// <summary>
+        ///     Creates an optional from an operation that might fail (throw an exception)
+        /// </summary>
+        /// <param name="op">The operation</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The created optional</returns>
+        public static Opt<TValue> FromOp<TValue>(Func<TValue> op)
+        {
+            try
+            {
+                return Some(op());
+            }
+            catch
+            {
+                return None<TValue>();
+            }
+        }
 
     }
 
