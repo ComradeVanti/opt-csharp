@@ -52,6 +52,25 @@ namespace ComradeVanti.CSharpTools
         public static bool IsNone<TValue>(this Opt<TValue> opt) =>
             opt is None<TValue>;
 
+        /// <summary>
+        /// Executes the given action if the optional is present, 
+        /// passing in the contained value.
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="action">The action to execute</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        public static void Iter<TValue>(this Opt<TValue> opt, Action<TValue> action)
+        {
+            switch (opt)
+            {
+                case Some<TValue> some:
+                    action(some.Value);
+                    return;
+                case None<TValue> _:
+                    return;
+            }
+        }
+
     }
 
     /// <summary>
