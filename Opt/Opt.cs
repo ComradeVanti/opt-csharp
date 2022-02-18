@@ -78,6 +78,14 @@ namespace ComradeVanti.CSharpTools
         public static bool IsNone<TValue>(this Opt<TValue> opt) =>
             opt is None<TValue>;
 
+        /// <summary>
+        ///     Attempts to get the value from the optional and throws an
+        ///     exception if the value is missing
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The contained value</returns>
+        /// <exception cref="OptionalMissingException">If the optional is missing</exception>
         public static TValue Get<TValue>(this Opt<TValue> opt) =>
             opt switch
             {
@@ -105,6 +113,17 @@ namespace ComradeVanti.CSharpTools
             }
         }
 
+        /// <summary>
+        ///     Maps an optional from one type to another using a mapping-function.
+        ///     If the optional is present its value will be passed to the
+        ///     mapping-function and the result wrapped in a new optional. If the optional
+        ///     is missing a new missing optional will be returned.
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="mapper">The mapping function</param>
+        /// <typeparam name="TMapped">The type of the mapped optional</typeparam>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The mapped optional</returns>
         public static Opt<TMapped> Map<TMapped, TValue>(this Opt<TValue> opt, Func<TValue, TMapped> mapper) =>
             opt switch
             {
