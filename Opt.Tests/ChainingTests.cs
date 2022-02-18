@@ -28,6 +28,35 @@ namespace ComradeVanti.CSharpTools
         }
 
         [Property]
+        public static bool MatchSomeFunctionIsOnlyCalledForSome(Opt<int> opt)
+        {
+            var executed = false;
+
+            _ = opt.Match(_ =>
+            {
+                executed = true;
+                return 0;
+            }, () => 0);
+
+            return executed == opt.IsSome();
+        }
+
+        [Fact]
+        public static void MatchNoneFunctionIsOnlyCalledForNone()
+        {
+            var result = Opt.None<int>().Match(_ => 0, () => 1);
+
+            Assert.Equal(1, result);
+        }
+
+        [Property]
+        public static bool ValueIsCorrectlyMatched(Opt<int> opt)
+        {
+            var result = opt.Match(it => (int?)it, () => null);
+            return result != null == opt.IsSome();
+        }
+
+        [Property]
         public static bool IterActionIsOnlyCalledForSome(Opt<int> opt)
         {
             var executed = false;

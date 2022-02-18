@@ -116,13 +116,32 @@ namespace ComradeVanti.CSharpTools
         }
 
         /// <summary>
+        ///     Executes the onSome function if the optional is present, passing in
+        ///     the value or the onNone if it is missing and returns the result
+        ///     of the executed function.
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="onSome">The function to execute if the optional is present</param>
+        /// <param name="onNone">The function to execute if the optional is missing</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <typeparam name="TMapped">The type of the result</typeparam>
+        /// <returns>The of either the onSome or onNone function</returns>
+        public static TMapped Match<TValue, TMapped>(this Opt<TValue> opt, Func<TValue, TMapped> onSome, Func<TMapped> onNone) =>
+            opt switch
+            {
+                Some<TValue> some => onSome(some.Value),
+                None<TValue> => onNone(),
+                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
+            };
+
+        /// <summary>
         ///     Executes the given action if the optional is present,
         ///     passing in the contained value.
         /// </summary>
         /// <param name="opt">The optional</param>
         /// <param name="action">The action to execute</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
-        public static void Iter<TValue>(this Opt<TValue> opt, Action<TValue> action) => 
+        public static void Iter<TValue>(this Opt<TValue> opt, Action<TValue> action) =>
             opt.Match(action, () => { });
 
         /// <summary>
