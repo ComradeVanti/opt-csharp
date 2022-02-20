@@ -5,14 +5,13 @@
         <RootNamespace>ComradeVanti.CSharpTools</RootNamespace>
         <Nullable>enable</Nullable>
         <TargetFrameworks>net5.0;netcoreapp3.1;netstandard2.1</TargetFrameworks>
+        <DebugType>embedded</DebugType>
     </PropertyGroup>
     
     <PropertyGroup>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
-
+    
     <PropertyGroup>
         <PackageId>ComradeVanti.CSharpTools.Opt</PackageId>
         <Title>Opt</Title>
