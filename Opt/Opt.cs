@@ -15,7 +15,7 @@ namespace ComradeVanti.CSharpTools
             {
                 Some<TValue> some1 when obj is Some<TValue> some2 =>
                     Equals(some1.Value, some2.Value),
-                None<TValue> when obj is None<TValue> _ => true,
+                None<TValue> _ when obj is None<TValue> _ => true,
                 _ => false
             };
 
@@ -23,7 +23,7 @@ namespace ComradeVanti.CSharpTools
             this switch
             {
                 Some<TValue> some => some.GetHashCode(),
-                None<TValue> => 0,
+                None<TValue> _ => 0,
                 _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
             };
 
@@ -105,7 +105,7 @@ namespace ComradeVanti.CSharpTools
                 case Some<TValue> some:
                     onSome(some.Value);
                     return;
-                case None<TValue>:
+                case None<TValue> _:
                     onNone();
                     return;
             }
@@ -126,7 +126,7 @@ namespace ComradeVanti.CSharpTools
             opt switch
             {
                 Some<TValue> some => onSome(some.Value),
-                None<TValue> => onNone(),
+                None<TValue> _ => onNone(),
                 _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
             };
 
