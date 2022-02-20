@@ -3,7 +3,6 @@
     <PropertyGroup>
         <AssemblyName>ComradeVanti.CSharpTools.Opt</AssemblyName>
         <RootNamespace>ComradeVanti.CSharpTools</RootNamespace>
-        <Nullable>enable</Nullable>
         <TargetFrameworks>net5.0;netcoreapp3.1;netstandard2.1</TargetFrameworks>
         <DebugType>embedded</DebugType>
     </PropertyGroup>

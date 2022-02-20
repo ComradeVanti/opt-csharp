@@ -10,28 +10,36 @@ namespace ComradeVanti.CSharpTools
     public abstract class Opt<TValue>
     {
 
-        public override bool Equals(object? obj) =>
-            this switch
+        public override bool Equals(object obj)
+        {
+            switch (this)
             {
-                Some<TValue> some1 when obj is Some<TValue> some2 =>
-                    Equals(some1.Value, some2.Value),
-                None<TValue> _ when obj is None<TValue> _ => true,
-                _ => false
-            };
+                case Some<TValue> some1 when obj is Some<TValue> some2:
+                    return Equals(some1.Value, some2.Value);
+                case None<TValue> _ when obj is None<TValue> _:
+                    return true;
+                default: return false;
+            }
+        }
 
-        public override int GetHashCode() =>
-            this switch
+        public override int GetHashCode()
+        {
+            switch (this)
             {
-                Some<TValue> some => some.GetHashCode(),
-                None<TValue> _ => 0,
-                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
-            };
+                case Some<TValue> some:
+                    return some.GetHashCode();
+                case None<TValue> _:
+                    return 0;
+                default:
+                    throw new Exception("Invalid type"); // Here for the compiler. Should never happen
+            }
+        }
 
         public static bool operator ==(Opt<TValue> opt1, Opt<TValue> opt2) =>
-            opt1.Equals(opt2);
+            Equals(opt1, opt2);
 
         public static bool operator !=(Opt<TValue> opt1, Opt<TValue> opt2) =>
-            !opt1.Equals(opt2);
+            !Equals(opt1, opt2);
 
     }
 
@@ -122,13 +130,15 @@ namespace ComradeVanti.CSharpTools
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <typeparam name="TMapped">The type of the result</typeparam>
         /// <returns>The result of either the onSome or onNone function</returns>
-        public static TMapped Match<TValue, TMapped>(this Opt<TValue> opt, Func<TValue, TMapped> onSome, Func<TMapped> onNone) =>
-            opt switch
+        public static TMapped Match<TValue, TMapped>(this Opt<TValue> opt, Func<TValue, TMapped> onSome, Func<TMapped> onNone)
+        {
+            switch (opt)
             {
-                Some<TValue> some => onSome(some.Value),
-                None<TValue> _ => onNone(),
-                _ => throw new Exception("Invalid type") // Here for the compiler. Should never happen
-            };
+                case Some<TValue> some: return onSome(some.Value);
+                case None<TValue> _: return onNone();
+                default: throw new Exception("Invalid type");
+            }
+        }
 
         /// <summary>
         ///     Executes the given action if the optional is present,
