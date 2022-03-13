@@ -14,7 +14,7 @@
     <PropertyGroup>
         <PackageId>ComradeVanti.CSharpTools.Opt</PackageId>
         <Title>Opt</Title>
-        <PackageVersion>1.1.0</PackageVersion>
+        <PackageVersion>1.1.1</PackageVersion>
         <Authors>ComradeVanti</Authors>
         <Description>A C# library that mimics F#'s optionals</Description>
         <PackageIcon>Icon.png</PackageIcon>
