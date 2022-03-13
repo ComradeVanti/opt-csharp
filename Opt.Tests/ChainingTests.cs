@@ -189,4 +189,12 @@ public class ChainingTests
     public bool FoldingSomeReturnsTheResultOfTheFoldingFunction(int initial, int i) =>
         Opt.Some(i).Fold((s, it) => s + it, initial) == i + initial;
 
+    [Property]
+    public bool FoldingBackNoneReturnsTheInitialState(int initial) =>
+        Opt.None<int>().FoldBack((it, s) => s + it, initial) == initial;
+
+    [Property]
+    public bool FoldingBackSomeReturnsTheResultOfTheFoldingFunction(int initial, int i) =>
+        Opt.Some(i).FoldBack((it, s) => s + it, initial) == i + initial;
+
 }

@@ -205,6 +205,19 @@ namespace ComradeVanti.CSharpTools
         public static TState Fold<TValue, TState>(this Opt<TValue> opt, Func<TState, TValue, TState> folder, TState state) =>
             opt.Match(it => folder(state, it), () => state);
 
+        /// <summary>
+        ///     Executes a folder-function with the value if present and returns the result
+        ///     otherwise the initial state
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="folder">The folder-function</param>
+        /// <param name="state">The initial state</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <typeparam name="TState">The type of the state</typeparam>
+        /// <returns>The result of the folder-function or initial state</returns>
+        public static TState FoldBack<TValue, TState>(this Opt<TValue> opt, Func<TValue, TState, TState> folder, TState state) =>
+            opt.Match(it => folder(it, state), () => state);
+
     }
 
 }
