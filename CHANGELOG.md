@@ -1,5 +1,7 @@
 ﻿# Changelog
 ## 1.1.0
+### Added
+- [Count](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#count) function
 ### Changed
 - Class structure. Moved Ext class to own file
 - Test project target framework to .Net 6
