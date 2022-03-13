@@ -169,4 +169,16 @@ public class ChainingTests
     public bool FilteringSomeWithCorrectPredicateIsSome(int i) =>
         Opt.Some(i).Filter(it => it == i).IsSome();
 
+    [Fact]
+    public void FlatteningNestedNoneIsNone() =>
+        Assert.True(Opt.Some(Opt.None<int>()).Flatten().IsNone());
+
+    [Fact]
+    public void FlatteningNoneIsNone() =>
+        Assert.True(Opt.None<Opt<int>>().Flatten().IsNone());
+
+    [Property]
+    public bool FlatteningNestedSomeIsSome(int i) =>
+        Opt.Some(Opt.Some(i)).Flatten().Equals(Opt.Some(i));
+
 }

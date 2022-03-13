@@ -183,6 +183,15 @@ namespace ComradeVanti.CSharpTools
         public static Opt<TValue> Filter<TValue>(this Opt<TValue> opt, Func<TValue, bool> predicate) =>
             opt.Bind(it => predicate(it) ? opt : Opt.None<TValue>());
 
+        /// <summary>
+        ///     Collapses a nested optional into a flat one
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The flattened optional</returns>
+        public static Opt<TValue> Flatten<TValue>(this Opt<Opt<TValue>> opt) =>
+            opt.Match(it => it, Opt.None<TValue>);
+
     }
 
 }
