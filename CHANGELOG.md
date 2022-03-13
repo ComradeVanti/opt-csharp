@@ -1,4 +1,7 @@
 ﻿# Changelog
+## 1.1.1
+### Fixed
+- Missing functions in readme
 ## 1.1.0
 ### Added
 - [Count](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#count) function

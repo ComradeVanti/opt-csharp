@@ -35,3 +35,11 @@ using `==`.
 - Match (for actions and functions)
 - Iter
 - Contains
+- Count
+- DefaultWith
+- Exists
+- Filter
+- Flatten
+- Fold
+- FoldBack
+- ForAll
