@@ -137,4 +137,12 @@ public class ChainingTests
     public bool CountIsOneForSome(int i) =>
         Opt.Some(i).Count() == 1;
 
+    [Property]
+    public bool DefaultWithReturnsTheValueOfTheOptionalIfPresent(int i) =>
+        Opt.Some(i.ToString()).DefaultWith(() => "") == i.ToString();
+
+    [Fact]
+    public void DefaultWithReturnsTheResultOfTheReplacementFunctionIfTheOptionalIsMissing() =>
+        Assert.Equal(1, Opt.None<int>().DefaultWith(() => 1));
+
 }

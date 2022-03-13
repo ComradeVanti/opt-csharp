@@ -150,6 +150,17 @@ namespace ComradeVanti.CSharpTools
         public static int Count<TValue>(this Opt<TValue> opt) =>
             opt.Match(_ => 1, () => 0);
 
+        /// <summary>
+        ///     Gets the value or the result of the replacement-function if the optional is
+        ///     missing
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="replacementF">The replacement-function</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>Thw value or replacement</returns>
+        public static TValue DefaultWith<TValue>(this Opt<TValue> opt, Func<TValue> replacementF) =>
+            opt.Match(it => it, replacementF);
+
     }
 
 }
