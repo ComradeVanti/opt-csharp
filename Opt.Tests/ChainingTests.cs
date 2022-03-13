@@ -157,4 +157,16 @@ public class ChainingTests
     public void ExistsIsFalseIfOptionalIsMissing() =>
         Assert.False(Opt.None<int>().Exists(it => it == 0));
 
+    [Fact]
+    public void FilteringNoneIsNone() =>
+        Assert.True(Opt.None<int>().Filter(_ => true).IsNone());
+
+    [Property]
+    public bool FilteringSomeWithIncorrectPredicateIsNone(int i) =>
+        Opt.Some(i).Filter(it => it != i).IsNone();
+
+    [Property]
+    public bool FilteringSomeWithCorrectPredicateIsSome(int i) =>
+        Opt.Some(i).Filter(it => it == i).IsSome();
+
 }

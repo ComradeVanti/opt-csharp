@@ -172,6 +172,17 @@ namespace ComradeVanti.CSharpTools
         public static bool Exists<TValue>(this Opt<TValue> opt, Func<TValue, bool> predicate) =>
             opt.Match(predicate, () => false);
 
+        /// <summary>
+        ///     Filters the optional with a predicate. If the optional is present but the
+        ///     predicate is not satisfied a missing optional is returned.
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="predicate">The predicate</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>The filtered optional</returns>
+        public static Opt<TValue> Filter<TValue>(this Opt<TValue> opt, Func<TValue, bool> predicate) =>
+            opt.Bind(it => predicate(it) ? opt : Opt.None<TValue>());
+
     }
 
 }
