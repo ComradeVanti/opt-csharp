@@ -3,6 +3,7 @@
 ### Added
 - [Count](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#count) function
 - [DefaultWith](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#defaultWith) function
+- [Exists](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#exists) function
 ### Changed
 - Class structure. Moved Ext class to own file
 - Test project target framework to .Net 6

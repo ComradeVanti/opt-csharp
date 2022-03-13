@@ -145,4 +145,16 @@ public class ChainingTests
     public void DefaultWithReturnsTheResultOfTheReplacementFunctionIfTheOptionalIsMissing() =>
         Assert.Equal(1, Opt.None<int>().DefaultWith(() => 1));
 
+    [Property]
+    public bool ExistsIsTrueIfOptionalIsPresentAndPredicateCorrect(int i) =>
+        Opt.Some(i).Exists(it => it == i);
+
+    [Property]
+    public bool ExistsIsFalseIfOptionalIsPresentAndPredicateIncorrect(int i) =>
+        !Opt.Some(i).Exists(it => it != i);
+
+    [Fact]
+    public void ExistsIsFalseIfOptionalIsMissing() =>
+        Assert.False(Opt.None<int>().Exists(it => it == 0));
+
 }

@@ -161,6 +161,17 @@ namespace ComradeVanti.CSharpTools
         public static TValue DefaultWith<TValue>(this Opt<TValue> opt, Func<TValue> replacementF) =>
             opt.Match(it => it, replacementF);
 
+        /// <summary>
+        ///     Checks if the value in the optional satisfies a predicate. Returns false if
+        ///     the optional is missing
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="predicate">The predicate</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>Whether the value satisfies the predicate</returns>
+        public static bool Exists<TValue>(this Opt<TValue> opt, Func<TValue, bool> predicate) =>
+            opt.Match(predicate, () => false);
+
     }
 
 }
