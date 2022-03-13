@@ -1,4 +1,7 @@
 ﻿# Changelog
+## 1.1.0
+### Changed
+- Class structure. Moved Ext class to own file
 ## 1.0.2
 ### Added
 - .NetStandard 2.0 target
