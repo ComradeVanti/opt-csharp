@@ -218,6 +218,18 @@ namespace ComradeVanti.CSharpTools
         public static TState FoldBack<TValue, TState>(this Opt<TValue> opt, Func<TValue, TState, TState> folder, TState state) =>
             opt.Match(it => folder(it, state), () => state);
 
+
+        /// <summary>
+        ///     Checks if the value in the optional satisfies a predicate. Returns true if
+        ///     the optional is missing
+        /// </summary>
+        /// <param name="opt">The optional</param>
+        /// <param name="predicate">The predicate</param>
+        /// <typeparam name="TValue">The type of the contained value</typeparam>
+        /// <returns>Whether the value satisfies the predicate</returns>
+        public static bool ForAll<TValue>(this Opt<TValue> opt, Func<TValue, bool> predicate) =>
+            opt.Match(predicate, () => true);
+
     }
 
 }

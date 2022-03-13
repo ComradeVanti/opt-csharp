@@ -197,4 +197,16 @@ public class ChainingTests
     public bool FoldingBackSomeReturnsTheResultOfTheFoldingFunction(int initial, int i) =>
         Opt.Some(i).FoldBack((it, s) => s + it, initial) == i + initial;
 
+    [Fact]
+    public void ForAllNoneIsTrue() =>
+        Assert.True(Opt.None<int>().ForAll(it => it > 0));
+
+    [Property]
+    public bool ForAllSomeWithCorrectPredicateIsTrue(int i) =>
+        Opt.Some(i).ForAll(it => it == i);
+
+    [Property]
+    public bool ForAllSomeWithIncorrectPredicateIsFalse(int i) =>
+        !Opt.Some(i).ForAll(it => it != i);
+
 }
