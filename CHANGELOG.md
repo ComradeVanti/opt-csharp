@@ -2,6 +2,7 @@
 ## 1.1.0
 ### Changed
 - Class structure. Moved Ext class to own file
+- Test project target framework to .Net 6
 ## 1.0.2
 ### Added
 - .NetStandard 2.0 target
