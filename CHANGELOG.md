@@ -6,6 +6,7 @@
 - [Exists](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#exists) function
 - [Filter](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#filter) function
 - [Flatten](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#flatten) function
+- [Fold](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html#fold) function
 ### Changed
 - Class structure. Moved Ext class to own file
 - Test project target framework to .Net 6

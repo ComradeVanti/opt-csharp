@@ -181,4 +181,12 @@ public class ChainingTests
     public bool FlatteningNestedSomeIsSome(int i) =>
         Opt.Some(Opt.Some(i)).Flatten().Equals(Opt.Some(i));
 
+    [Property]
+    public bool FoldingNoneReturnsTheInitialState(int initial) =>
+        Opt.None<int>().Fold((s, it) => s + it, initial) == initial;
+
+    [Property]
+    public bool FoldingSomeReturnsTheResultOfTheFoldingFunction(int initial, int i) =>
+        Opt.Some(i).Fold((s, it) => s + it, initial) == i + initial;
+
 }
