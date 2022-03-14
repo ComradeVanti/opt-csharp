@@ -1,4 +1,7 @@
 ﻿# Changelog
+## 1.1.2
+### Fixed
+- Incorrect changelog-link in readme
 ## 1.1.1
 ### Fixed
 - Missing functions in readme

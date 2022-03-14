@@ -6,7 +6,7 @@ cases even the method names are directly taken from F#, go check
 out [the documentation there](https://fsharp.github.io/fsharp-core-docs/reference/fsharp-core-optionmodule.html)
 for details.
 
-[Changelog](./CHANGELOG.md)
+[Changelog](https://github.com/ComradeVanti/opt-csharp/blob/main/CHANGELOG.md)
 
 ## Features
 
