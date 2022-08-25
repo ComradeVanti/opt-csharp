@@ -1,4 +1,7 @@
 ﻿# Changelog
+## Upcoming
+## Added
+- `TryGet` extension for `IDictionary`
 ## 2.0.1
 ### Fixed
 - `FromNullable` method did not work with some types, like `string` but now it  does

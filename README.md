@@ -44,3 +44,11 @@ with `==` will compare them using reference equality.
 - Fold
 - FoldBack
 - ForAll
+
+### Utility extensions
+
+Opt also includes some utility extensions for existing types
+
+#### IDictionary
+
+- TryGet
