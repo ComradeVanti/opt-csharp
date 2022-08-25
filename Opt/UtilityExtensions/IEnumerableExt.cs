@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ComradeVanti.CSharpTools.UtilityExtensions
@@ -35,6 +36,21 @@ namespace ComradeVanti.CSharpTools.UtilityExtensions
         /// <returns>The item or None, if no such index exists</returns>
         public static IOpt<T> TryElementAt<T>(this IEnumerable<T> items, int index) =>
             Opt.FromOp(() => items.ElementAt(index));
+
+        /// <summary>
+        ///     Selects and maps all items in the sequence where the given choose function
+        ///     returned some
+        /// </summary>
+        /// <param name="items">The sequence</param>
+        /// <param name="choose">The choose function</param>
+        /// <typeparam name="T">The type of item in the sequence</typeparam>
+        /// <typeparam name="TChosen">The type of the chosen sequence</typeparam>
+        /// <returns>The sequence of chosen items</returns>
+        public static IEnumerable<TChosen> Choose<T, TChosen>(this IEnumerable<T> items, Func<T, IOpt<TChosen>> choose) =>
+            from item in items
+            let chosen = choose(item)
+            where chosen.IsSome()
+            select chosen.Get();
 
         /// <summary>
         ///     Collects a sequence of optionals
