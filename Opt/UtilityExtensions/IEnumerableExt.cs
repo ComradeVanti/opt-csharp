@@ -53,6 +53,17 @@ namespace ComradeVanti.CSharpTools.UtilityExtensions
             select chosen.Get();
 
         /// <summary>
+        ///     Attempts to get the first item in the sequence for which the given
+        ///     predicate holds
+        /// </summary>
+        /// <param name="items">The sequence</param>
+        /// <param name="pred">The predicate</param>
+        /// <typeparam name="T">The type of item in the sequence</typeparam>
+        /// <returns>The found item or none if no item matched the predicate</returns>
+        public static IOpt<T> TryFind<T>(this IEnumerable<T> items, Func<T, bool> pred) =>
+            items.Where(pred).TryFirst();
+
+        /// <summary>
         ///     Collects a sequence of optionals
         /// </summary>
         /// <param name="opts">The sequence</param>

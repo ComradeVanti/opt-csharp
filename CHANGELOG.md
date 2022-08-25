@@ -6,6 +6,7 @@
 - `TryLast` extension for `IEnumerable`
 - `TryElementAt` extension for `IEnumerable`
 - `Choose` extension for `IEnumerable`
+- `TryFind` extension for `IEnumerable`
 - `Collect` extension for `IEnumerable`
 ## 2.0.1
 ### Fixed
