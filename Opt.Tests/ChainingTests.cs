@@ -7,7 +7,7 @@ public class ChainingTests
 {
 
     [Property]
-    public static bool MatchSomeActionIsOnlyCalledForSome(Opt<int> opt)
+    public static bool MatchSomeActionIsOnlyCalledForSome(IOpt<int> opt)
     {
         var executed = false;
 
@@ -27,7 +27,7 @@ public class ChainingTests
     }
 
     [Property]
-    public static bool MatchSomeFunctionIsOnlyCalledForSome(Opt<int> opt)
+    public static bool MatchSomeFunctionIsOnlyCalledForSome(IOpt<int> opt)
     {
         var executed = false;
 
@@ -49,14 +49,14 @@ public class ChainingTests
     }
 
     [Property]
-    public static bool ValueIsCorrectlyMatched(Opt<int> opt)
+    public static bool ValueIsCorrectlyMatched(IOpt<int> opt)
     {
         var result = opt.Match(it => (int?)it, () => null);
         return result != null == opt.IsSome();
     }
 
     [Property]
-    public static bool IterActionIsOnlyCalledForSome(Opt<int> opt)
+    public static bool IterActionIsOnlyCalledForSome(IOpt<int> opt)
     {
         var executed = false;
 
@@ -66,7 +66,7 @@ public class ChainingTests
     }
 
     [Property]
-    public static bool MappingFunctionIsOnlyCalledForSome(Opt<int> opt)
+    public static bool MappingFunctionIsOnlyCalledForSome(IOpt<int> opt)
     {
         var executed = false;
 
@@ -92,7 +92,7 @@ public class ChainingTests
         Opt.Some(i).Map(it => it + 1).Get() == i + 1;
 
     [Property]
-    public static bool BindingFunctionIsOnlyCalledForSome(Opt<int> opt)
+    public static bool BindingFunctionIsOnlyCalledForSome(IOpt<int> opt)
     {
         var executed = false;
 
@@ -175,7 +175,7 @@ public class ChainingTests
 
     [Fact]
     public void FlatteningNoneIsNone() =>
-        Assert.True(Opt.None<Opt<int>>().Flatten().IsNone());
+        Assert.True(Opt.None<IOpt<int>>().Flatten().IsNone());
 
     [Property]
     public bool FlatteningNestedSomeIsSome(int i) =>

@@ -11,11 +11,12 @@ for details.
 ## Features
 
 Methods for creating optionals are located on the `Opt` class. Methods
-like `Map` or `Bind` are available as extension methods on `Opt` instances for
+like `Map` or `Bind` are available as extension methods on `IOpt` instances for
 easy chaining.
 
-`Opts` are immutable reference-types. They are compared using equality even when
-using `==`.
+`IOpt` are immutable reference-types. Comparing them with `Equals` will be true
+if the both contain a value and those values are equal. Comparing `IOpt`
+with `==` will compare them using reference equality.
 
 ### Optional instantiation
 

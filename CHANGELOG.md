@@ -1,4 +1,10 @@
 ﻿# Changelog
+## 2.0.0
+### Changed
+- Opt is now an interface `IOpt`
+### Removed
+- Can no longer compare `IOpt` instances with `==` while using value equality, 
+instead this will use the usual reference equality.
 ## 1.1.2
 ### Fixed
 - Incorrect changelog-link in readme

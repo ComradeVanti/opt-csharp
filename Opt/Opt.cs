@@ -4,57 +4,33 @@ namespace ComradeVanti.CSharpTools
 {
 
     /// <summary>
-    ///     A value that may be present or not
-    /// </summary>
-    /// <typeparam name="TValue">The type of the contained value</typeparam>
-    public abstract class Opt<TValue>
-    {
-
-        public override bool Equals(object obj)
-        {
-            switch (this)
-            {
-                case Some<TValue> some1 when obj is Some<TValue> some2:
-                    return Equals(some1.Value, some2.Value);
-                case None<TValue> _ when obj is None<TValue> _:
-                    return true;
-                default: return false;
-            }
-        }
-
-        public override int GetHashCode()
-        {
-            switch (this)
-            {
-                case Some<TValue> some:
-                    return some.GetHashCode();
-                case None<TValue> _:
-                    return 0;
-                default:
-                    throw new Exception("Invalid type"); // Here for the compiler. Should never happen
-            }
-        }
-
-        public static bool operator ==(Opt<TValue> opt1, Opt<TValue> opt2) =>
-            Equals(opt1, opt2);
-
-        public static bool operator !=(Opt<TValue> opt1, Opt<TValue> opt2) =>
-            !Equals(opt1, opt2);
-
-    }
-
-    /// <summary>
     ///     An optional value that is present
     /// </summary>
     /// <typeparam name="TValue">The type of the contained value</typeparam>
-    internal sealed class Some<TValue> : Opt<TValue>
+    internal sealed class Some<TValue> : IOpt<TValue>
     {
 
-        public TValue Value { get; }
+        private readonly TValue value;
 
 
         public Some(TValue value) =>
-            Value = value;
+            this.value = value;
+
+
+        public TResult Match<TResult>(Func<TValue, TResult> onSome, Func<TResult> _) =>
+            onSome(value);
+
+
+        public override bool Equals(object obj) =>
+            obj is IOpt<TValue> other
+            && other.Match(otherValue => Equals(value, otherValue),
+                           () => false);
+
+        public override int GetHashCode() =>
+            value.GetHashCode();
+
+        public override string ToString() =>
+            $"Opt {{ {value} }}";
 
     }
 
@@ -62,7 +38,26 @@ namespace ComradeVanti.CSharpTools
     ///     An optional value that is not present
     /// </summary>
     /// <typeparam name="TValue">The type of the contained value</typeparam>
-    internal sealed class None<TValue> : Opt<TValue> { }
+    internal sealed class None<TValue> : IOpt<TValue>
+    {
+
+        public TResult Match<TResult>(Func<TValue, TResult> _, Func<TResult> onNone) =>
+            onNone();
+
+
+        public override bool Equals(object obj) =>
+            obj is IOpt<TValue> other
+            && other.Match(_ => false,
+                           () => true);
+
+        public override int GetHashCode() =>
+            0;
+
+
+        public override string ToString() =>
+            "Opt { }";
+
+    }
 
 
     /// <summary>
@@ -77,7 +72,7 @@ namespace ComradeVanti.CSharpTools
         /// <param name="value">The value to be contained in the optional</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The created optional</returns>
-        public static Opt<TValue> Some<TValue>(TValue value) =>
+        public static IOpt<TValue> Some<TValue>(TValue value) =>
             new Some<TValue>(value);
 
         /// <summary>
@@ -85,7 +80,7 @@ namespace ComradeVanti.CSharpTools
         /// </summary>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The created optional</returns>
-        public static Opt<TValue> None<TValue>() =>
+        public static IOpt<TValue> None<TValue>() =>
             new None<TValue>();
 
         /// <summary>
@@ -95,7 +90,7 @@ namespace ComradeVanti.CSharpTools
         /// <param name="value">The value to convert into an optional</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The created optional</returns>
-        public static Opt<TValue> FromNullable<TValue>(TValue value) where TValue : new() =>
+        public static IOpt<TValue> FromNullable<TValue>(TValue value) where TValue : new() =>
             value != null ? Some(value) : None<TValue>();
 
         /// <summary>
@@ -105,7 +100,7 @@ namespace ComradeVanti.CSharpTools
         /// <param name="value">The value to convert into an optional</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The created optional</returns>
-        public static Opt<TValue> FromNullable<TValue>(TValue? value) where TValue : struct =>
+        public static IOpt<TValue> FromNullable<TValue>(TValue? value) where TValue : struct =>
             value != null ? Some(value.Value) : None<TValue>();
 
         /// <summary>
@@ -114,7 +109,7 @@ namespace ComradeVanti.CSharpTools
         /// <param name="op">The operation</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The created optional</returns>
-        public static Opt<TValue> FromOp<TValue>(Func<TValue> op)
+        public static IOpt<TValue> FromOp<TValue>(Func<TValue> op)
         {
             try
             {

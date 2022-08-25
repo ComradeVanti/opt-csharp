@@ -1,6 +1,3 @@
-﻿namespace ComradeVanti.CSharpTools
-{
+﻿namespace ComradeVanti.CSharpTools;
 
-    public class TestRefType { }
-
-}
+public class TestRefType { }
