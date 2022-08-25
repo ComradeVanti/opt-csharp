@@ -64,6 +64,17 @@ namespace ComradeVanti.CSharpTools.UtilityExtensions
             items.Where(pred).TryFirst();
 
         /// <summary>
+        ///     Attempts to get the last item in the sequence for which the given
+        ///     predicate holds
+        /// </summary>
+        /// <param name="items">The sequence</param>
+        /// <param name="pred">The predicate</param>
+        /// <typeparam name="T">The type of item in the sequence</typeparam>
+        /// <returns>The found item or none if no item matched the predicate</returns>
+        public static IOpt<T> TryFindBack<T>(this IEnumerable<T> items, Func<T, bool> pred) =>
+            items.Reverse().TryFind(pred);
+
+        /// <summary>
         ///     Collects a sequence of optionals
         /// </summary>
         /// <param name="opts">The sequence</param>

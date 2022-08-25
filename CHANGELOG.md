@@ -1,5 +1,5 @@
 ﻿# Changelog
-## Upcoming
+## 2.1.0
 ## Added
 - `TryGet` extension for `IDictionary`
 - `TryFirst` extension for `IEnumerable`
@@ -7,6 +7,7 @@
 - `TryElementAt` extension for `IEnumerable`
 - `Choose` extension for `IEnumerable`
 - `TryFind` extension for `IEnumerable`
+- `TryFindBack` extension for `IEnumerable`
 - `Collect` extension for `IEnumerable`
 ## 2.0.1
 ### Fixed

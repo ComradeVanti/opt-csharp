@@ -60,4 +60,5 @@ Opt also includes some utility extensions for existing types
 - TryElementAt
 - Choose
 - TryFind
+- TryFindBack
 - Collect
