@@ -82,7 +82,7 @@ namespace ComradeVanti.CSharpTools
         /// <returns>The created optional</returns>
         public static IOpt<TValue> None<TValue>() =>
             new None<TValue>();
-
+        
         /// <summary>
         ///     Creates an optional from a nullable, which will be missing if the
         ///     given value is null
@@ -90,7 +90,7 @@ namespace ComradeVanti.CSharpTools
         /// <param name="value">The value to convert into an optional</param>
         /// <typeparam name="TValue">The type of the contained value</typeparam>
         /// <returns>The created optional</returns>
-        public static IOpt<TValue> FromNullable<TValue>(TValue value) where TValue : new() =>
+        public static IOpt<TValue> FromNullable<TValue>(TValue value) where TValue : class =>
             value != null ? Some(value) : None<TValue>();
 
         /// <summary>
