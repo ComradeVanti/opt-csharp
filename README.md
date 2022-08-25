@@ -52,3 +52,9 @@ Opt also includes some utility extensions for existing types
 #### IDictionary
 
 - TryGet
+
+### IEnumerable
+
+- TryFirst
+- TryLast
+- TryElementAt
