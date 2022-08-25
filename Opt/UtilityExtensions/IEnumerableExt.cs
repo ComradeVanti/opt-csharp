@@ -17,6 +17,9 @@ namespace ComradeVanti.CSharpTools.UtilityExtensions
         public static IOpt<T> TryElementAt<T>(this IEnumerable<T> items, int index) =>
             Opt.FromOp(() => items.ElementAt(index));
 
+        public static IOpt<IEnumerable<T>> Collect<T>(this IEnumerable<IOpt<T>> opts) => 
+            Opt.FromOp(() => opts.Select(it => it.Get()));
+
     }
 
 }

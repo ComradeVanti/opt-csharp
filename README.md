@@ -58,3 +58,4 @@ Opt also includes some utility extensions for existing types
 - TryFirst
 - TryLast
 - TryElementAt
+- Collect
