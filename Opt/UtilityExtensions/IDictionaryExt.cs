@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ComradeVanti.CSharpTools.UtilityExtensions
+namespace ComradeVanti.CSharpTools
 {
 
     // ReSharper disable once InconsistentNaming

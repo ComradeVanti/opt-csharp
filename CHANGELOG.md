@@ -1,4 +1,7 @@
 ﻿# Changelog
+## Upcoming
+### Changed
+- Move extensions methods into base namespace
 ## 2.1.0
 ## Added
 - `TryGet` extension for `IDictionary`
