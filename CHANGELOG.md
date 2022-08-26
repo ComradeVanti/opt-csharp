@@ -2,8 +2,10 @@
 ## Upcoming
 ### Changed
 - Move extensions methods into base namespace
+### Fixed
+- Formatting in Changelog and Readme
 ## 2.1.0
-## Added
+### Added
 - `TryGet` extension for `IDictionary`
 - `TryFirst` extension for `IEnumerable`
 - `TryLast` extension for `IEnumerable`

@@ -53,7 +53,7 @@ Opt also includes some utility extensions for existing types
 
 - TryGet
 
-### IEnumerable
+#### IEnumerable
 
 - TryFirst
 - TryLast
