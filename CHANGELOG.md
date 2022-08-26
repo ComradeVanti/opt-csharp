@@ -1,5 +1,7 @@
 ﻿# Changelog
 ## Upcoming
+### Added
+- Include changelog in package
 ### Changed
 - Move extensions methods into base namespace
 ### Fixed
