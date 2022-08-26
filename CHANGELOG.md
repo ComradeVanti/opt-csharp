@@ -4,6 +4,7 @@
 - Include changelog in package
 ### Changed
 - Move extensions methods into base namespace
+- Move `Some` and `None` to own files
 ### Fixed
 - Formatting in Changelog and Readme
 ## 2.1.0
