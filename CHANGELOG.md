@@ -8,6 +8,10 @@
   Also added relevant documentation.
 - `TrySingle` extension for `IEnumerable`
 
+### Changed
+
+- Reword summary on `Match`
+
 ## 2.2.0
 
 ### Added

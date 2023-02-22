@@ -39,8 +39,7 @@ namespace ComradeVanti.CSharpTools
                       () => throw new OptionalMissingException());
 
         /// <summary>
-        ///     Executes the onSome action if the optional is present, passing in
-        ///     the value or the onNone if it is missing
+        ///     Executes either a onSome or onNone action depending on if the optional is present
         /// </summary>
         /// <param name="opt">The optional</param>
         /// <param name="onSome">The action for when the optional is present</param>
