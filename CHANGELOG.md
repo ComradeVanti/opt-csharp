@@ -6,6 +6,7 @@
 
 - ISome and INone interfaces in order to support pattern matching on IOpt instances. 
   Also added relevant documentation.
+- Short function summaries in readme
 - `TrySingle` extension for `IEnumerable`
 
 ### Changed
