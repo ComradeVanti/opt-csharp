@@ -2,6 +2,8 @@
 
 ## Upcoming
 
+## 2.3.0
+
 ### Added
 
 - ISome and INone interfaces in order to support pattern matching on IOpt instances. 
