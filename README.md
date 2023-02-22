@@ -83,3 +83,4 @@ Opt also includes some utility extensions for existing types
 - `TryMax` Attempts to get the maximum element from the collection
 - `TryMin` Attempts to get the minimum element from the collection
 - `TryMaxBy` Attempts to get the maximum element from the collection according to a selector function
+- `TryMinBy` Attempts to get the minimum element from the collection according to a selector function

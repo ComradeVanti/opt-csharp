@@ -133,5 +133,16 @@ namespace ComradeVanti.CSharpTools
         /// <returns>The maximum. None if the collection is empty</returns>
         public static IOpt<T> TryMaxBy<T, TSortable>(this IEnumerable<T> items, Func<T, TSortable> selector) =>
             items.OrderByDescending(selector).TryFirst();
+        
+        /// <summary>
+        ///     Attempts to get the minimum element from the collection according to a selector function
+        /// </summary>
+        /// <param name="items">The collection</param>
+        /// <param name="selector">The selector function</param>
+        /// <typeparam name="T">The type of the contained value</typeparam>
+        /// <typeparam name="TSortable">The output type of the selector function</typeparam>
+        /// <returns>The minimum. None if the collection is empty</returns>
+        public static IOpt<T> TryMinBy<T, TSortable>(this IEnumerable<T> items, Func<T, TSortable> selector) =>
+            items.OrderBy(selector).TryFirst();
     }
 }

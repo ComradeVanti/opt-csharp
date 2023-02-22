@@ -12,6 +12,7 @@
 - `TryMax` extension for `IEnumerable`
 - `TryMin` extension for `IEnumerable`
 - `TryMaxBy` extension for `IEnumerable`
+- `TryMinBy` extension for `IEnumerable`
 
 ### Changed
 

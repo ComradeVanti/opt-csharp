@@ -86,4 +86,20 @@ public class IEnumerableExtTest
         var opt = collection.TryMaxBy(it => it.Length);
         Assert.True(opt.Contains("ccc"));
     }
+    
+    [Fact]
+    public void TryMinByIsNoneForEmptyCollections()
+    {
+        var collection = Array.Empty<string>();
+        var opt = collection.TryMinBy(it => it.Length);
+        Assert.True(opt.IsNone());
+    }
+
+    [Fact]
+    public void TryMinByFindsTheMinimumElement()
+    {
+        var collection = new[] {"a", "bb", "ccc"};
+        var opt = collection.TryMinBy(it => it.Length);
+        Assert.True(opt.Contains("a"));
+    }
 }
