@@ -113,5 +113,14 @@ namespace ComradeVanti.CSharpTools
         /// <returns>The maximum. None if the collection is empty</returns>
         public static IOpt<T> TryMax<T>(this IEnumerable<T> items) =>
             Opt.FromOp(items.Max);
+        
+        /// <summary>
+        ///     Attempts to get the minimum element from the collection
+        /// </summary>
+        /// <param name="items">The collection</param>
+        /// <typeparam name="T">The type of the contained value</typeparam>
+        /// <returns>The minimum. None if the collection is empty</returns>
+        public static IOpt<T> TryMin<T>(this IEnumerable<T> items) =>
+            Opt.FromOp(items.Min);
     }
 }

@@ -10,6 +10,7 @@
 - `TrySingle` extension for `IEnumerable`
 - `FilterSome` extension for `IEnumerable`
 - `TryMax` extension for `IEnumerable`
+- `TryMin` extension for `IEnumerable`
 
 ### Changed
 
