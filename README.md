@@ -79,3 +79,4 @@ Opt also includes some utility extensions for existing types
 - TryFind
 - TryFindBack
 - Collect
+- TrySingle

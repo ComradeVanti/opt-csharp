@@ -4,11 +4,9 @@ using System.Linq;
 
 namespace ComradeVanti.CSharpTools
 {
-
     // ReSharper disable once InconsistentNaming
     public static class IEnumerableExt
     {
-
         /// <summary>
         ///     Attempts to get the first element from the sequence
         /// </summary>
@@ -86,6 +84,16 @@ namespace ComradeVanti.CSharpTools
         public static IOpt<IEnumerable<T>> Collect<T>(this IEnumerable<IOpt<T>> opts) =>
             Opt.FromOp(() => opts.Select(it => it.Get()));
 
+        /// <summary>
+        ///     Attempts to get the only item in this collection
+        /// </summary>
+        /// <param name="items">The collection</param>
+        /// <typeparam name="T">The type of the contained value</typeparam>
+        /// <returns>The value or None if the collection did not have exactly one item</returns>
+        public static IOpt<T> TrySingle<T>(this IEnumerable<T> items)
+        {
+            var array = items.ToArray();
+            return array.Length == 1 ? Opt.Some(array[0]) : Opt.None<T>();
+        }
     }
-
 }
