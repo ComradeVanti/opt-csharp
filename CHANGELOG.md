@@ -2,6 +2,8 @@
 
 ## Upcoming
 
+## 3.0.0
+
 ### Changed
 
 - `IOpt` now implements `IEnumerable`. Some functions are now implemented using
