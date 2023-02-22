@@ -45,6 +45,23 @@ with `==` will compare them using reference equality.
 - FoldBack
 - ForAll
 
+### Pattern matching
+
+You can use [C# pattern-matching](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching)
+on `IOpt` instances to check if they have a value or not.
+
+For example:
+
+```csharp
+switch (x) // Where x is an IOpt<int>
+{
+    case ISome<int> { Value: var value}: // value is an int
+        break;
+    case INone<int> :
+        break;
+}
+```
+
 ### Utility extensions
 
 Opt also includes some utility extensions for existing types

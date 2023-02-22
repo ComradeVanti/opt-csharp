@@ -7,7 +7,7 @@ namespace ComradeVanti.CSharpTools
     ///     An optional value that is not present
     /// </summary>
     /// <typeparam name="TValue">The type of the contained value</typeparam>
-    internal sealed class None<TValue> : IOpt<TValue>
+    internal sealed class None<TValue> : INone<TValue>
     {
 
         public TResult Match<TResult>(Func<TValue, TResult> _, Func<TResult> onNone) =>
