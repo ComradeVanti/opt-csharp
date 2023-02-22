@@ -38,4 +38,20 @@ public class IEnumerableExtTest
         var filtered = collections.FilterSome();
         Assert.Equal(filtered, new[] {0, 1, 10});
     }
+
+    [Fact]
+    public void TryMaxIsNoneForEmptyCollections()
+    {
+        var collection = Array.Empty<int>();
+        var opt = collection.TryMax();
+        Assert.True(opt.IsNone());
+    }
+    
+    [Fact]
+    public void TryMaxFindsTheMaximumElement()
+    {
+        var collection = new[] {1, 2, 3};
+        var opt = collection.TryMax();
+        Assert.True(opt.Contains(3));
+    }
 }

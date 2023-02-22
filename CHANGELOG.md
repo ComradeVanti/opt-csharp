@@ -9,6 +9,7 @@
 - Short function summaries in readme
 - `TrySingle` extension for `IEnumerable`
 - `FilterSome` extension for `IEnumerable`
+- `TryMax` extension for `IEnumerable`
 
 ### Changed
 

@@ -80,3 +80,4 @@ Opt also includes some utility extensions for existing types
 - `Collect` Collects a sequence of optionals
 - `TrySingle` Attempts to get the only item in this collection
 - `FilterSome` Filters out any missing values and returns only the present ones
+- `TryMax` Attempts to get the maximum element from the collection
