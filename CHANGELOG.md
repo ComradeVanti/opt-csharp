@@ -11,6 +11,7 @@
 - `FilterSome` extension for `IEnumerable`
 - `TryMax` extension for `IEnumerable`
 - `TryMin` extension for `IEnumerable`
+- `TryMaxBy` extension for `IEnumerable`
 
 ### Changed
 

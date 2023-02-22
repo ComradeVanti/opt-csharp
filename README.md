@@ -82,3 +82,4 @@ Opt also includes some utility extensions for existing types
 - `FilterSome` Filters out any missing values and returns only the present ones
 - `TryMax` Attempts to get the maximum element from the collection
 - `TryMin` Attempts to get the minimum element from the collection
+- `TryMaxBy` Attempts to get the maximum element from the collection according to a selector function

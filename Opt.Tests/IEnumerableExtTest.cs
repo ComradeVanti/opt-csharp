@@ -46,7 +46,7 @@ public class IEnumerableExtTest
         var opt = collection.TryMax();
         Assert.True(opt.IsNone());
     }
-    
+
     [Fact]
     public void TryMaxFindsTheMaximumElement()
     {
@@ -54,7 +54,7 @@ public class IEnumerableExtTest
         var opt = collection.TryMax();
         Assert.True(opt.Contains(3));
     }
-    
+
     [Fact]
     public void TryMinIsNoneForEmptyCollections()
     {
@@ -62,12 +62,28 @@ public class IEnumerableExtTest
         var opt = collection.TryMin();
         Assert.True(opt.IsNone());
     }
-    
+
     [Fact]
     public void TryMinFindsTheMinimumElement()
     {
         var collection = new[] {1, 2, 3};
         var opt = collection.TryMin();
         Assert.True(opt.Contains(1));
+    }
+
+    [Fact]
+    public void TryMaxByIsNoneForEmptyCollections()
+    {
+        var collection = Array.Empty<string>();
+        var opt = collection.TryMaxBy(it => it.Length);
+        Assert.True(opt.IsNone());
+    }
+
+    [Fact]
+    public void TryMaxByFindsTheMaximumElement()
+    {
+        var collection = new[] {"a", "bb", "ccc"};
+        var opt = collection.TryMaxBy(it => it.Length);
+        Assert.True(opt.Contains("ccc"));
     }
 }
