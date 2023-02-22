@@ -2,11 +2,21 @@
 
 ## Upcoming
 
+### Changed
+
+- `IOpt` now implements `IEnumerable`. Some functions are now implemented using
+  Linq such as `Count`, `Contains`, `Any`/`All` (formerly `Exists`)
+
+### Removed
+
+- `Exists` function
+
 ## 2.3.0
 
 ### Added
 
-- ISome and INone interfaces in order to support pattern matching on IOpt instances. 
+- ISome and INone interfaces in order to support pattern matching on IOpt
+  instances.
   Also added relevant documentation.
 - Short function summaries in readme
 - `TrySingle` extension for `IEnumerable`

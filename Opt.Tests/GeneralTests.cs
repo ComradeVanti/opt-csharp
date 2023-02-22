@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Linq;
 using FsCheck.Xunit;
 using Xunit;
 
@@ -6,7 +6,6 @@ namespace ComradeVanti.CSharpTools;
 
 public class GeneralTests
 {
-
     [Property]
     public bool OptsThatAreSomeAreNeverNone(IOpt<int> opt) =>
         opt.IsSome() != opt.IsNone();
@@ -46,4 +45,17 @@ public class GeneralTests
     public bool SomeOptsDontContainValueIfItIsNotEqual(int i) =>
         !Opt.Some(i).Contains(i + 1);
 
+    [Fact]
+    public void NoneIsEmptyCollection()
+    {
+        var opt = Opt.None<int>();
+        Assert.Empty(opt);
+    }
+
+    [Property]
+    public bool SomeIsSingletonCollection(int i)
+    {
+        var opt = Opt.Some(i);
+        return opt.ToArray().SequenceEqual(new[] {i});
+    }
 }

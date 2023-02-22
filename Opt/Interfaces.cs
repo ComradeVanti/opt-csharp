@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ComradeVanti.CSharpTools
 {
@@ -7,7 +8,7 @@ namespace ComradeVanti.CSharpTools
     ///     A value that may or may not be present
     /// </summary>
     /// <typeparam name="TValue">The type of the contained value</typeparam>
-    public interface IOpt<out TValue>
+    public interface IOpt<out TValue> : IEnumerable<TValue>
     {
 
         TResult Match<TResult>(Func<TValue, TResult> onSome, Func<TResult> onNone);

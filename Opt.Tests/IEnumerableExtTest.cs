@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FsCheck.Xunit;
 using Xunit;
 
@@ -52,7 +53,7 @@ public class IEnumerableExtTest
     {
         var collection = new[] {1, 2, 3};
         var opt = collection.TryMax();
-        Assert.True(opt.Contains(3));
+        Assert.Contains(3, opt);
     }
 
     [Fact]
@@ -68,7 +69,7 @@ public class IEnumerableExtTest
     {
         var collection = new[] {1, 2, 3};
         var opt = collection.TryMin();
-        Assert.True(opt.Contains(1));
+        Assert.Contains(1, opt);
     }
 
     [Fact]
@@ -84,7 +85,7 @@ public class IEnumerableExtTest
     {
         var collection = new[] {"a", "bb", "ccc"};
         var opt = collection.TryMaxBy(it => it.Length);
-        Assert.True(opt.Contains("ccc"));
+        Assert.Contains("ccc", opt);
     }
     
     [Fact]
@@ -100,6 +101,6 @@ public class IEnumerableExtTest
     {
         var collection = new[] {"a", "bb", "ccc"};
         var opt = collection.TryMinBy(it => it.Length);
-        Assert.True(opt.Contains("a"));
+        Assert.Contains("a", opt);
     }
 }

@@ -18,35 +18,46 @@ easy chaining.
 if the both contain a value and those values are equal. Comparing `IOpt`
 with `==` will compare them using reference equality.
 
+`IOpt` implements `IEnumerable` and supports Linq extensions such
+as `Contains`, `Count`, `Any` and `ToArray` as well as use in `foreach`
+statements.
+
 ### Optional instantiation
 
 - `Some` Creates a present optional
 - `None` Creates a missing optional
-- `FromNullable` Creates an optional from a nullable, which will be missing if the given value is null
-- `FromOp` Creates an optional from an operation that might fail (throw an exception)
+- `FromNullable` Creates an optional from a nullable, which will be missing if
+  the given value is null
+- `FromOp` Creates an optional from an operation that might fail (throw an
+  exception)
 
 ### Optional extension methods
 
 - `IsSome` Checks if the optional is present
 - `IsNone` Checks if the optional is missing
-- `Get` Attempts to get the value from the optional and throws an exception if the value is missing
-- `DefaultValue` Gets the value from this optional or a replacement if it is missing
+- `Get` Attempts to get the value from the optional and throws an exception if
+  the value is missing
+- `DefaultValue` Gets the value from this optional or a replacement if it is
+  missing
 - `Map` Maps an optional from one type to another using a mapping-function
-- `Bind` Maps an optional from one type to another using a mapping-function which itself produces an optional
-- `Match` Executes either a onSome or onNone action depending on if the optional is present
-- `Iter`  Executes the given action if the optional is present, passing in the contained value
-- `Contains` Checks if this optional contains a specific value
-- `Count` Gets the "count" of this optional, meaning 1 if it is present and 0 if it is missing
-- `DefaultWith` Gets the value or the result of the replacement-function if it is missing
-- `Exists` Checks if the value in the optional satisfies a predicate. Returns false if the optional is missing
+- `Bind` Maps an optional from one type to another using a mapping-function
+  which itself produces an optional
+- `Match` Executes either a onSome or onNone action depending on if the optional
+  is present
+- `Iter`  Executes the given action if the optional is present, passing in the
+  contained value
+- `DefaultWith` Gets the value or the result of the replacement-function if it
+  is missing
 - `Filter` Filters the optional with a predicate
 - `Flatten` Collapses a nested optional into a flat one
 - `Fold`/`FoldBack` Executes a folder-function with the value if present
-- `ForAll` Checks if the value in the optional satisfies a predicate. Returns true if the optional is missing
+- `ForAll` Checks if the value in the optional satisfies a predicate. Returns
+  true if the optional is missing
 
 ### Pattern matching
 
-You can use [C# pattern-matching](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching)
+You can
+use [C# pattern-matching](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching)
 on `IOpt` instances to check if they have a value or not.
 
 For example:
@@ -74,13 +85,18 @@ Opt also includes some utility extensions for existing types
 - `TryFirst` Attempts to get the first element from the sequence
 - `TryLast` Attempts to get the last element from the sequence
 - `TryElementAt` Attempts to get an element from the sequence by its index
-- `Choose` Selects and maps all items in the sequence where the given choose function returned some
-- `TryFind` Attempts to get the first item in the sequence for which the given predicate holds
-- `TryFindBack` Attempts to get the last item in the sequence for which the given predicate holds
+- `Choose` Selects and maps all items in the sequence where the given choose
+  function returned some
+- `TryFind` Attempts to get the first item in the sequence for which the given
+  predicate holds
+- `TryFindBack` Attempts to get the last item in the sequence for which the
+  given predicate holds
 - `Collect` Collects a sequence of optionals
 - `TrySingle` Attempts to get the only item in this collection
 - `FilterSome` Filters out any missing values and returns only the present ones
 - `TryMax` Attempts to get the maximum element from the collection
 - `TryMin` Attempts to get the minimum element from the collection
-- `TryMaxBy` Attempts to get the maximum element from the collection according to a selector function
-- `TryMinBy` Attempts to get the minimum element from the collection according to a selector function
+- `TryMaxBy` Attempts to get the maximum element from the collection according
+  to a selector function
+- `TryMinBy` Attempts to get the minimum element from the collection according
+  to a selector function

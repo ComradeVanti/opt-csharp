@@ -1,11 +1,11 @@
-﻿using FsCheck.Xunit;
+﻿using System.Linq;
+using FsCheck.Xunit;
 using Xunit;
 
 namespace ComradeVanti.CSharpTools;
 
 public class ChainingTests
 {
-
     [Property]
     public static bool MatchSomeActionIsOnlyCalledForSome(IOpt<int> opt)
     {
@@ -51,7 +51,7 @@ public class ChainingTests
     [Property]
     public static bool ValueIsCorrectlyMatched(IOpt<int> opt)
     {
-        var result = opt.Match(it => (int?)it, () => null);
+        var result = opt.Match(it => (int?) it, () => null);
         return result != null == opt.IsSome();
     }
 
@@ -123,7 +123,7 @@ public class ChainingTests
 
     [Property]
     public bool GettingValueFromSomeReturnsValue(int i) =>
-        Opt.Some(i).Map(it => (int?)it).DefaultValue(null) != null;
+        Opt.Some(i).Map(it => (int?) it).DefaultValue(null) != null;
 
     [Fact]
     public void GettingValueFromNoneReturnsReplacement() =>
@@ -131,7 +131,7 @@ public class ChainingTests
 
     [Fact]
     public void CountIsZeroForNone() =>
-        Assert.Equal(0, Opt.None<int>().Count());
+        Assert.Empty(Opt.None<int>());
 
     [Property]
     public bool CountIsOneForSome(int i) =>
@@ -144,18 +144,6 @@ public class ChainingTests
     [Fact]
     public void DefaultWithReturnsTheResultOfTheReplacementFunctionIfTheOptionalIsMissing() =>
         Assert.Equal(1, Opt.None<int>().DefaultWith(() => 1));
-
-    [Property]
-    public bool ExistsIsTrueIfOptionalIsPresentAndPredicateCorrect(int i) =>
-        Opt.Some(i).Exists(it => it == i);
-
-    [Property]
-    public bool ExistsIsFalseIfOptionalIsPresentAndPredicateIncorrect(int i) =>
-        !Opt.Some(i).Exists(it => it != i);
-
-    [Fact]
-    public void ExistsIsFalseIfOptionalIsMissing() =>
-        Assert.False(Opt.None<int>().Exists(it => it == 0));
 
     [Fact]
     public void FilteringNoneIsNone() =>
@@ -208,5 +196,4 @@ public class ChainingTests
     [Property]
     public bool ForAllSomeWithIncorrectPredicateIsFalse(int i) =>
         !Opt.Some(i).ForAll(it => it != i);
-
 }
