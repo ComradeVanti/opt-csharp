@@ -95,5 +95,14 @@ namespace ComradeVanti.CSharpTools
             var array = items.ToArray();
             return array.Length == 1 ? Opt.Some(array[0]) : Opt.None<T>();
         }
+
+        /// <summary>
+        ///     Filters out any missing values and returns only the present ones
+        /// </summary>
+        /// <param name="opts">A sequence of optionals</param>
+        /// <typeparam name="T">The type of the contained value</typeparam>
+        /// <returns>The present values</returns>
+        public static IEnumerable<T> FilterSome<T>(this IEnumerable<IOpt<T>> opts) =>
+            opts.Choose(it => it);
     }
 }

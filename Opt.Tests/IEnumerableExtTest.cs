@@ -30,4 +30,12 @@ public class IEnumerableExtTest
         var opt = collection.TrySingle();
         Assert.True(opt.IsNone());
     }
+
+    [Fact]
+    public void FilterSomeReturnsOnlyPresentValues()
+    {
+        var collections = new[] {Opt.Some(0), Opt.None<int>(), Opt.Some(1), Opt.None<int>(), Opt.None<int>(), Opt.Some(10)};
+        var filtered = collections.FilterSome();
+        Assert.Equal(filtered, new[] {0, 1, 10});
+    }
 }

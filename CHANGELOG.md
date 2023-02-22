@@ -8,6 +8,7 @@
   Also added relevant documentation.
 - Short function summaries in readme
 - `TrySingle` extension for `IEnumerable`
+- `FilterSome` extension for `IEnumerable`
 
 ### Changed
 

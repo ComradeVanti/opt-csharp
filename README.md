@@ -79,3 +79,4 @@ Opt also includes some utility extensions for existing types
 - `TryFindBack` Attempts to get the last item in the sequence for which the given predicate holds
 - `Collect` Collects a sequence of optionals
 - `TrySingle` Attempts to get the only item in this collection
+- `FilterSome` Filters out any missing values and returns only the present ones
