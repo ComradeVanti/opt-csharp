@@ -8,6 +8,11 @@ for details.
 
 [Changelog](https://github.com/ComradeVanti/opt-csharp/blob/main/CHANGELOG.md)
 
+**⚠️ Development is paused ⚠️**  
+No new features will be added or bugs fixed unless requested through an issue.  
+If you wish to fork this repository and continue the work, you are very welcome
+to do so.
+
 ## Features
 
 Methods for creating optionals are located on the `Opt` class. Methods
